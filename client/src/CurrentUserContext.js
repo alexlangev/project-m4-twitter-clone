@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 export const CurrentUserContext = React.createContext(null);
 
@@ -7,7 +7,7 @@ export const CurrentUserProvider = ({children}) => {
   const [status, setStatus] = React.useState('loading');
 
   //Fetching user data
-  useEffect(() => {
+  React.useEffect(() => {
     fetch('/api/me/profile')
     .then(res => {
         if(!res.ok){
@@ -18,7 +18,7 @@ export const CurrentUserProvider = ({children}) => {
     .then(res => res.json())
     .then(data => {
         setCurrentUser(data);
-        setStatus('Idle');
+        setStatus('idle');
     })
     .catch(err => console.log(err));
 }, [])

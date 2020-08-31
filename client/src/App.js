@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter , Switch, Route, Link} from 'react-router-dom';
+import {BrowserRouter , Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -19,7 +19,7 @@ function App() {
   //variable for conditionnal rendering
   const status = React.useContext(CurrentUserContext).status;
 
-  if(status === 'Idle'){
+  if(status === 'idle'){
     return(
     <Wrapper>
       <GlobalStyles />
