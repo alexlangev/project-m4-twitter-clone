@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import BigTweet from './BigTweet';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const TweetDetails = () => {
   //Getting Tweet Id from window
@@ -48,21 +49,29 @@ const TweetDetails = () => {
     .catch(err => console.log(err));
   }, [])
 
-  return(
-    <Wrapper>
-      <BigTweet 
-        id={tweetDetails.id}
-        handle={tweetDetails.handle}
-        displayName={tweetDetails.displayName}
-        avatarSrc={tweetDetails.avatarSrc}
-        bannerSrc={tweetDetails.bannerSrc}
-        timestamp={tweetDetails.timestamp}
-        status={tweetDetails.status}
 
-      />
-    </Wrapper>
-    
-  ) 
+  if(tweetDetailsStatus === 'idle'){
+    return(
+      <Wrapper>
+        <BigTweet 
+          id={tweetDetails.id}
+          handle={tweetDetails.handle}
+          displayName={tweetDetails.displayName}
+          avatarSrc={tweetDetails.avatarSrc}
+          bannerSrc={tweetDetails.bannerSrc}
+          timestamp={tweetDetails.timestamp}
+          status={tweetDetails.status}
+        />
+      </Wrapper>
+    )
+  } else {
+
+    return(
+      <Wrapper>
+        <CircularProgress style={{margin: 'auto'}} />
+      </Wrapper>
+    )
+  }
 }
 
 const Wrapper = styled.div`

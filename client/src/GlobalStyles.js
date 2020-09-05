@@ -2,10 +2,14 @@
 This CSS reset is taken from Workshop m4-3-react--state
  */
 import { createGlobalStyle } from 'styled-components';
-
+// import { injectGlobal } from 'styled-components';
 import { COLORS } from './constants';
 
+
+
 export default createGlobalStyle`
+    @import url('https://fonts.googleapis.com/css2?family=Hind+Vadodara:wght@600');
+
     *,
     *:before,
     *:after {
@@ -43,7 +47,17 @@ export default createGlobalStyle`
         border: 0;
         font-size: 100%;
         vertical-align: baseline;
+        font-family: 'Hind Vadodara', sans-serif;
     }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: black;
+    }
+
     /* HTML5 display-role reset for older browsers */
     article, aside, details, figcaption, figure,
     footer, header, hgroup, menu, nav, section {
