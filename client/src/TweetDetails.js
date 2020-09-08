@@ -19,6 +19,7 @@ const TweetDetails = () => {
     timestamp: null,
     status: null,
     imgUrl: null,
+    media:null,
   });
   const [tweetDetailsStatus, setTweetDetailsStatus] = React.useState('loading');
 
@@ -42,6 +43,7 @@ const TweetDetails = () => {
         bannerSrc: data.tweet.author.bannerSrc,
         timestamp: data.tweet.timestamp,
         status: data.tweet.status,
+        media: data.tweet.media,
         
       });
       setTweetDetailsStatus('idle');
@@ -61,6 +63,7 @@ const TweetDetails = () => {
           bannerSrc={tweetDetails.bannerSrc}
           timestamp={tweetDetails.timestamp}
           status={tweetDetails.status}
+          media={tweetDetails.media}
         />
       </Wrapper>
     )

@@ -21,7 +21,6 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
     })
     .then(res => res.json())
     .then(data => {
-      console.log(data);
       setHomeFeedTweetIds(data.tweetIds);
       setHomeFeedTweetByIds(data.tweetsById);
       setHomeFeedStatus('idle');
@@ -48,7 +47,7 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
           id={homeFeedTweetByIds[tweetId].id}
           isLiked={homeFeedTweetByIds[tweetId].isLiked}
           isRetweeted={homeFeedTweetByIds[tweetId].isRetweeted}
-          url={homeFeedTweetByIds[tweetId].media.url}
+          media={homeFeedTweetByIds[tweetId].media}
           numLikes={homeFeedTweetByIds[tweetId].numLikes}
           numRetweets={homeFeedTweetByIds[tweetId].numRetweets}
           status={homeFeedTweetByIds[tweetId].status}
@@ -62,6 +61,7 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
 }
 
 const Wrapper = styled.div`
+width: 75%;
 `
 
 export default HomeFeed;

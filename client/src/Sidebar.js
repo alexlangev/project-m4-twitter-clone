@@ -39,9 +39,6 @@ const Sidebar = () => {
 }
 
 const Wrapper = styled.div`
-  /* temp */
-  border: 1px black solid;
-
   width: 25%;
   height: 100vh;
   display: flex;
