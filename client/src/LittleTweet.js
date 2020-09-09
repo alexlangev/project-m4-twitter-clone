@@ -35,7 +35,7 @@ const LittleTweet = (props) => {
             <TweetText>
               <TweetSource>
                 <DisplayName><strong>{props.displayName}</strong></DisplayName>
-                <Handle>{`@${props.handle}`}</Handle>
+                <Handle>{`@${props.handle} · `}</Handle>
                 {/* Will need to fix this... */}
                 <Date>{props.timestamp}</Date>
               </TweetSource>         

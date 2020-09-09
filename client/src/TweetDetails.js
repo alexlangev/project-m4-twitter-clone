@@ -40,11 +40,9 @@ const TweetDetails = () => {
         handle: data.tweet.author.handle,
         displayName: data.tweet.author.displayName,
         avatarSrc: data.tweet.author.avatarSrc,
-        bannerSrc: data.tweet.author.bannerSrc,
         timestamp: data.tweet.timestamp,
         status: data.tweet.status,
         media: data.tweet.media,
-        
       });
       setTweetDetailsStatus('idle');
     })
@@ -60,7 +58,6 @@ const TweetDetails = () => {
           handle={tweetDetails.handle}
           displayName={tweetDetails.displayName}
           avatarSrc={tweetDetails.avatarSrc}
-          bannerSrc={tweetDetails.bannerSrc}
           timestamp={tweetDetails.timestamp}
           status={tweetDetails.status}
           media={tweetDetails.media}
@@ -78,6 +75,7 @@ const TweetDetails = () => {
 }
 
 const Wrapper = styled.div`
+  width: 70%; 
 `
 
 export default TweetDetails;

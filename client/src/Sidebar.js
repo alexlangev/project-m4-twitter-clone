@@ -40,6 +40,7 @@ const Sidebar = () => {
 
 const Wrapper = styled.div`
   width: 25%;
+  min-width:135pt;
   height: 100vh;
   display: flex;
   flex-direction: column;

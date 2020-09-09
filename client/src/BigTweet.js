@@ -34,6 +34,7 @@ const BigTweet = (props) => {
         </BigTweetHeader>
         <Status>{props.status}</Status>
         <TweetImage src={imgUrl}/>
+        <TimeLine>{`${props.timestamp} · ${props.timestamp} · Critter web app`}</TimeLine>
         <TweetActionBar />
       </Wrapper>
     )
@@ -84,6 +85,10 @@ const TweetImage = styled.img`
   object-fit: cover;
   object-position: 50% 50%;
   border-radius: 25pt;
+`
+
+const TimeLine = styled.p`
+  margin: 10pt;
 `
 
 export default BigTweet;
