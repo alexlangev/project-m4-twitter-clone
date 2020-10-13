@@ -1,7 +1,7 @@
 // This is the tweet format for tweetDeatils page
-
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 import TweetActionBar from './TweetActionBar';
 
@@ -11,10 +11,16 @@ const BigTweet = (props) => {
     return(
       <Wrapper>
         < BigTweetHeader>
-        <Avatar src={props.avatarSrc} />
+          <Link to={`/${props.handle}`}>
+            <Avatar src={props.avatarSrc} />
+          </Link>
         <TweetSource>
-          <DisplayName><strong>{props.displayName}</strong></DisplayName>
-          <Handle>{`@${props.handle}`}</Handle>
+          <Link to={`/${props.handle}`}>
+            <DisplayName><strong>{props.displayName}</strong></DisplayName>
+          </Link>
+          <Link to={`/${props.handle}`}>
+            <Handle>{`@${props.handle}`}</Handle>
+          </Link>
         </TweetSource>
         </BigTweetHeader>
         <Status>{props.status}</Status>
@@ -26,10 +32,16 @@ const BigTweet = (props) => {
     return(
       <Wrapper>
         < BigTweetHeader>
-        <Avatar src={props.avatarSrc} />
+          <Link to={`/${props.handle}`}>
+            <Avatar src={props.avatarSrc} />
+          </Link>
+          <Link to={`/${props.handle}`}>
+            <DisplayName><strong>{`${props.displayName}`}</strong></DisplayName>
+          </Link>
         <TweetSource>
-          <DisplayName><strong>{props.displayName}</strong></DisplayName>
-          <Handle>{`@${props.handle}`}</Handle>
+          <Link to={`/${props.handle}`}>
+            <Handle>{`@${props.handle}`}</Handle>
+          </Link>
         </TweetSource>
         </BigTweetHeader>
         <Status>{props.status}</Status>
@@ -69,7 +81,7 @@ const DisplayName = styled.p`
 `
 
 const Handle = styled.p`
-  padding: 5pt 0 0 0;
+  padding: 5pt 0 0 5pt;
 `
 
 const Status = styled.p`

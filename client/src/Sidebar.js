@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { COLORS } from './constants';
 import logo from './assets/logo.svg';
 
-const Sidebar = () => {
+const Sidebar = (props) => {
   return(
     <Wrapper>
       <SidebarComponent exact to='/'>
@@ -17,7 +17,7 @@ const Sidebar = () => {
         </SidebarLabel>
       </SidebarComponent>
 
-      <SidebarComponent to='/:profileId'>
+      <SidebarComponent to={`/${props.userHandle}`}>
         <SidebarLabel>
           Profile
         </SidebarLabel>

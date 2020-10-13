@@ -39,19 +39,19 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
       {homeFeedTweetIds.map(tweetId => {
         return (
           <LittleTweet 
-          key={homeFeedTweetByIds[tweetId].id}
-          handle={homeFeedTweetByIds[tweetId].author.handle}
-          displayName={homeFeedTweetByIds[tweetId].author.displayName}
-          avatarSrc={homeFeedTweetByIds[tweetId].author.avatarSrc}
-          // More info bout the author??
-          id={homeFeedTweetByIds[tweetId].id}
-          isLiked={homeFeedTweetByIds[tweetId].isLiked}
-          isRetweeted={homeFeedTweetByIds[tweetId].isRetweeted}
-          media={homeFeedTweetByIds[tweetId].media}
-          numLikes={homeFeedTweetByIds[tweetId].numLikes}
-          numRetweets={homeFeedTweetByIds[tweetId].numRetweets}
-          status={homeFeedTweetByIds[tweetId].status}
-          timestamp={homeFeedTweetByIds[tweetId].timestamp}
+            key={homeFeedTweetByIds[tweetId].id}
+            handle={homeFeedTweetByIds[tweetId].author.handle}
+            displayName={homeFeedTweetByIds[tweetId].author.displayName}
+            avatarSrc={homeFeedTweetByIds[tweetId].author.avatarSrc}
+            // More info bout the author??
+            id={homeFeedTweetByIds[tweetId].id}
+            isLiked={homeFeedTweetByIds[tweetId].isLiked}
+            isRetweeted={homeFeedTweetByIds[tweetId].isRetweeted}
+            media={homeFeedTweetByIds[tweetId].media}
+            numLikes={homeFeedTweetByIds[tweetId].numLikes}
+            numRetweets={homeFeedTweetByIds[tweetId].numRetweets}
+            status={homeFeedTweetByIds[tweetId].status}
+            timestamp={homeFeedTweetByIds[tweetId].timestamp}
           />
         )
       })}

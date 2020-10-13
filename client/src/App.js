@@ -18,13 +18,15 @@ import { CurrentUserContext} from './CurrentUserContext';
 function App() {
   //variable for conditionnal rendering
   const status = React.useContext(CurrentUserContext).status;
+  const currentUser = React.useContext(CurrentUserContext).currentUser;
 
-  if(status === 'idle'){
+  if(status === 'idle'){  
     return(
     <Wrapper>
       <GlobalStyles />
       <BrowserRouter>
-        <Sidebar />
+        <Sidebar 
+          userHandle={currentUser.profile.handle}/>
         <Switch>
           <Route exact path='/'>
             <HomeFeed />

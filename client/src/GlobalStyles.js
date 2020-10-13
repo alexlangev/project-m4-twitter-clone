@@ -2,8 +2,6 @@
 This CSS reset is taken from Workshop m4-3-react--state
  */
 import { createGlobalStyle } from 'styled-components';
-// import { injectGlobal } from 'styled-components';
-import { COLORS } from './constants';
 
 
 
@@ -50,8 +48,20 @@ export default createGlobalStyle`
         font-family: 'Hind Vadodara', sans-serif;
     }
 
+    /* This is for the React Links which are anchor tags. */
     a {
         text-decoration: none;
+        color: inherit;
+    }
+
+    button {
+        background: none;
+        color: inherit;
+        border: none;
+        padding: 0;
+        font: inherit;
+        cursor: pointer;
+        outline: inherit;
     }
 
     a:visited {

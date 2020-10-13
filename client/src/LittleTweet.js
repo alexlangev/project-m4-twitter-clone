@@ -8,45 +8,65 @@ import TweetActionBar from './TweetActionBar';
 const LittleTweet = (props) => {
   if(props.media.length === 0){
     return(
-      <Wrapper to={`/tweet/${props.id}`}>
-        <LittleTweetHeader>
-          <Avatar src={props.avatarSrc} />
-            <TweetText>
-              <TweetSource>
-                <DisplayName><strong>{props.displayName}</strong></DisplayName>
-                <Handle>{`@${props.handle}`}</Handle>
-                {/* Will need to fix this... */}
-                <Date>{props.timestamp}</Date>
-              </TweetSource>
-              <Status>{props.status}</Status>
-            </TweetText>
-      </LittleTweetHeader>
-      <LittleTweetBody>
-          <TweetActionBar />
-        </LittleTweetBody>
-    </Wrapper>
+      <>
+        <Wrapper to={`/tweet/${props.id}`}>
+          <LittleTweetHeader>
+            <Link to={`/${props.handle}`}>
+              <Avatar src={props.avatarSrc} />
+            </Link>
+              <TweetText>
+                <TweetSource>
+                  <Link to={`/${props.handle}`}>
+                    <DisplayName><strong>{props.displayName}</strong></DisplayName>
+                  </Link>
+                  <Link to={`/${props.handle}`}>
+                    <Handle>{`@${props.handle} · `}</Handle>
+                  </Link>
+                  {/* Will need to fix this... */}
+                  <Date>{props.timestamp}</Date>
+                </TweetSource>
+                <Status>{props.status}</Status>
+              </TweetText>
+        </LittleTweetHeader>
+      </Wrapper>
+        <TweetActionBar
+          isLiked={props.isLiked}
+          id={props.id}
+        />
+      </>
     )
   } else {
     const imgUrl = props.media[0].url;
     return(
-      <Wrapper to={`/tweet/${props.id}`}>
-        <LittleTweetHeader>
-          <Avatar src={props.avatarSrc} />
-            <TweetText>
-              <TweetSource>
-                <DisplayName><strong>{props.displayName}</strong></DisplayName>
-                <Handle>{`@${props.handle} · `}</Handle>
-                {/* Will need to fix this... */}
-                <Date>{props.timestamp}</Date>
-              </TweetSource>         
-              <Status>{props.status}</Status>
-            </TweetText>
-        </LittleTweetHeader>
-        <LittleTweetBody>
-          <TweetImage src={imgUrl}/>
-          <TweetActionBar />
-        </LittleTweetBody>
-      </Wrapper>
+      <>
+        <Wrapper to={`/tweet/${props.id}`}>
+          <LittleTweetHeader>
+            <Link to={`/${props.handle}`}>
+              <Avatar src={props.avatarSrc} />
+            </Link>
+              <TweetText>
+                <TweetSource>
+                <Link to={`/${props.handle}`}>
+                  <DisplayName><strong>{props.displayName}</strong></DisplayName>
+                </Link>
+                <Link to={`/${props.handle}`}>
+                  <Handle>{`@${props.handle} · `}</Handle>
+                </Link>
+                  {/* Will need to fix this... */}
+                  <Date>{props.timestamp}</Date>
+                </TweetSource>         
+                <Status>{props.status}</Status>
+              </TweetText>
+          </LittleTweetHeader>
+          <LittleTweetBody>
+            <TweetImage src={imgUrl}/>
+          </LittleTweetBody>
+        </Wrapper>          
+        <TweetActionBar
+              isLiked={props.isLiked}
+              id={props.id}
+        />
+      </>
     )
   }
 }
@@ -69,6 +89,7 @@ const LittleTweetBody = styled.div`
   display: flex;
   flex-direction: column;
 `
+
 const TweetSource = styled.div`
   display: flex;
   flex-direction: row;

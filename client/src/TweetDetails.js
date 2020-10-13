@@ -14,7 +14,6 @@ const TweetDetails = () => {
     handle: null,
     displayName: null,
     avatarSrc: null,
-    bannerSrc: null,
     url: null,
     timestamp: null,
     status: null,
