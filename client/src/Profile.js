@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import ProfileHeader from './ProfileHeader';
+import ProfileBanner from './ProfileBanner';
 import ProfileActions from './ProfileActions';
 import ProfileFeed from './ProfileFeed';
+import ProfileInfo from './ProfileInfo';
 
 const Profile = (props) => {
   //Getting User Handle from window
   const handle = window.location.href.split('/')[3];
-  console.log(handle)
 
   //State for Tweet info
   const [userInfo, setUserInfo] = React.useState({
@@ -62,14 +62,30 @@ const Profile = (props) => {
 
   return(
     <ProfileWrapper>
-      <ProfileHeader />
+      <ProfileBanner 
+        avatarSrc={userInfo.avatarSrc}
+        bannerSrc={userInfo.bannerSrc}
+      />
+      <ProfileInfo 
+        displayName={userInfo.displayName}
+        handle={userInfo.handle}
+        bio={userInfo.bio}
+        numFollowers={userInfo.numFollowers}
+        numFollowing={userInfo.numFollowing}
+        location={userInfo.location}
+        joined={userInfo.joined}
+      />
       <ProfileActions />
-      <ProfileFeed />
+      <ProfileFeed 
+        handle={userInfo.handle}
+      />
     </ProfileWrapper>
   ) 
 }
 
 const ProfileWrapper = styled.div`
+  border-left : solid 1px darkgray;
+  width: 75%;
   display: flex;
   flex-direction: column;
 `
