@@ -51,7 +51,8 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
             numLikes={homeFeedTweetByIds[tweetId].numLikes}
             numRetweets={homeFeedTweetByIds[tweetId].numRetweets}
             status={homeFeedTweetByIds[tweetId].status}
-            timestamp={homeFeedTweetByIds[tweetId].timestamp}
+            timestamp={Date.parse(homeFeedTweetByIds[tweetId].timestamp)}
+            // timestamp={homeFeedTweetByIds[tweetId].timestamp}
           />
         )
       })}

@@ -19,6 +19,7 @@ const TweetDetails = () => {
     status: null,
     imgUrl: null,
     media:null,
+    isLiked:null,
   });
   const [tweetDetailsStatus, setTweetDetailsStatus] = React.useState('loading');
 
@@ -27,7 +28,7 @@ const TweetDetails = () => {
     fetch(`/api/tweet/${id}`)
     .then(res => {
         if(!res.ok){
-            throw Error(res.statusText);
+            throw Error(res.statusText); 
         }
         return res;
     })
@@ -42,6 +43,7 @@ const TweetDetails = () => {
         timestamp: data.tweet.timestamp,
         status: data.tweet.status,
         media: data.tweet.media,
+        isLiked: data.tweet.isLiked
       });
       setTweetDetailsStatus('idle');
     })
@@ -60,6 +62,7 @@ const TweetDetails = () => {
           timestamp={tweetDetails.timestamp}
           status={tweetDetails.status}
           media={tweetDetails.media}
+          isLiked={tweetDetails.isLiked}
         />
       </Wrapper>
     )

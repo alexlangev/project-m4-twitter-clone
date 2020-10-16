@@ -2,11 +2,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import {format} from 'date-fns';
 
 import TweetActionBar from './TweetActionBar';
 
 const BigTweet = (props) => {
-  console.log(props.media.length);
+  let formatedDate = format(new window.Date(props.timestamp),"MMM do yyyy");
   if(props.media.length === 0){
     return(
       <Wrapper>
@@ -24,7 +25,11 @@ const BigTweet = (props) => {
         </TweetSource>
         </BigTweetHeader>
         <Status>{props.status}</Status>
-        <TweetActionBar />
+        <TimeLine>{`${formatedDate} · Critter web app`}</TimeLine>
+        <TweetActionBar
+          isLiked={props.isLiked}
+          id={props.id}
+        />
       </Wrapper>
     )
   } else {
@@ -46,8 +51,11 @@ const BigTweet = (props) => {
         </BigTweetHeader>
         <Status>{props.status}</Status>
         <TweetImage src={imgUrl}/>
-        <TimeLine>{`${props.timestamp} · ${props.timestamp} · Critter web app`}</TimeLine>
-        <TweetActionBar />
+        <TimeLine>{`${formatedDate} · Critter web app`}</TimeLine>
+        <TweetActionBar
+          isLiked={props.isLiked}
+          id={props.id}
+        />
       </Wrapper>
     )
   }

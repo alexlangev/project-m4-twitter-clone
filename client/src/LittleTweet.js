@@ -2,10 +2,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import {format} from 'date-fns';
 
 import TweetActionBar from './TweetActionBar';
 
 const LittleTweet = (props) => {
+  let formatedDate = format(new window.Date(props.timestamp),"MMM do");
+
   if(props.media.length === 0){
     return(
       <>
@@ -23,7 +26,8 @@ const LittleTweet = (props) => {
                     <Handle>{`@${props.handle} · `}</Handle>
                   </Link>
                   {/* Will need to fix this... */}
-                  <Date>{props.timestamp}</Date>
+                  {/* format(new Date(2017, 10, 6), 'MMM') //=> 'Nov' */}
+                  <Date>{formatedDate}</Date>
                 </TweetSource>
                 <Status>{props.status}</Status>
               </TweetText>
@@ -53,7 +57,7 @@ const LittleTweet = (props) => {
                   <Handle>{`@${props.handle} · `}</Handle>
                 </Link>
                   {/* Will need to fix this... */}
-                  <Date>{props.timestamp}</Date>
+                  <Date>{formatedDate}</Date>
                 </TweetSource>         
                 <Status>{props.status}</Status>
               </TweetText>
@@ -63,8 +67,8 @@ const LittleTweet = (props) => {
           </LittleTweetBody>
         </Wrapper>          
         <TweetActionBar
-              isLiked={props.isLiked}
-              id={props.id}
+          isLiked={props.isLiked}
+          id={props.id}
         />
       </>
     )
