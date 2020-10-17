@@ -44,7 +44,7 @@ const TweetDetails = () => {
         status: data.tweet.status,
         media: data.tweet.media,
         isLiked: data.tweet.isLiked
-      });
+      },[id, tweetDetails]);
       setTweetDetailsStatus('idle');
     })
     .catch(err => console.log(err));
@@ -67,7 +67,6 @@ const TweetDetails = () => {
       </Wrapper>
     )
   } else {
-
     return(
       <Wrapper>
         <CircularProgress style={{margin: 'auto'}} />

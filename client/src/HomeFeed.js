@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 import CircularProgress from '@material-ui/core/CircularProgress';
 import LittleTweet from './LittleTweet';
+import NewTweet from './NewTweet';
 
-const HomeFeed = () => {
+const HomeFeed = ({currentUser}) => {
 //State for the loading screen of the homefeed
 const [homeFeedStatus, setHomeFeedStatus] = React.useState('loading');
 const [homeFeedTweetIds, setHomeFeedTweetIds] = React.useState(null);
@@ -36,6 +37,9 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
   } else {
   return (
     <Wrapper>
+      <NewTweet
+        currentUser={currentUser}
+      />
       {homeFeedTweetIds.map(tweetId => {
         return (
           <LittleTweet 
@@ -43,7 +47,6 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
             handle={homeFeedTweetByIds[tweetId].author.handle}
             displayName={homeFeedTweetByIds[tweetId].author.displayName}
             avatarSrc={homeFeedTweetByIds[tweetId].author.avatarSrc}
-            // More info bout the author??
             id={homeFeedTweetByIds[tweetId].id}
             isLiked={homeFeedTweetByIds[tweetId].isLiked}
             isRetweeted={homeFeedTweetByIds[tweetId].isRetweeted}
@@ -52,7 +55,6 @@ const [homeFeedTweetByIds, setHomeFeedTweetByIds] = React.useState(null);
             numRetweets={homeFeedTweetByIds[tweetId].numRetweets}
             status={homeFeedTweetByIds[tweetId].status}
             timestamp={Date.parse(homeFeedTweetByIds[tweetId].timestamp)}
-            // timestamp={homeFeedTweetByIds[tweetId].timestamp}
           />
         )
       })}

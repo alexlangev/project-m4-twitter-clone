@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter , Switch, Route} from 'react-router-dom';
+import { BrowserRouter as Router , Switch, Route} from 'react-router-dom';
 import styled from 'styled-components';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
@@ -16,20 +16,22 @@ import TweetDetails from './TweetDetails';
 import { CurrentUserContext} from './CurrentUserContext';
 
 function App() {
+
   //variable for conditionnal rendering
   const status = React.useContext(CurrentUserContext).status;
   const currentUser = React.useContext(CurrentUserContext).currentUser;
-
   if(status === 'idle'){  
     return(
     <Wrapper>
       <GlobalStyles />
-      <BrowserRouter>
+      <Router>
         <Sidebar 
           userHandle={currentUser.profile.handle}/>
         <Switch>
           <Route exact path='/'>
-            <HomeFeed />
+            <HomeFeed 
+              currentUser={currentUser}
+            />
           </Route>
 
           <Route exact path='/notifications'>  
@@ -48,7 +50,7 @@ function App() {
             <Profile />
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     </Wrapper>
     )
 
@@ -56,11 +58,11 @@ function App() {
     return (
       <Wrapper>
         <GlobalStyles />
-        <BrowserRouter>        
+        <Router>        
           <Sidebar />
           {/* // Loading animation */}
           <CircularProgress style={{margin: 'auto'}} />
-        </BrowserRouter>
+        </Router>
       </Wrapper>
     );
   }

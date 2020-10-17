@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
 import ProfileBanner from './ProfileBanner';
 import ProfileActions from './ProfileActions';
 import ProfileFeed from './ProfileFeed';
@@ -60,27 +61,34 @@ const Profile = (props) => {
     }, [])
 
 
-  return(
-    <ProfileWrapper>
-      <ProfileBanner 
-        avatarSrc={userInfo.avatarSrc}
-        bannerSrc={userInfo.bannerSrc}
-      />
-      <ProfileInfo 
-        displayName={userInfo.displayName}
-        handle={userInfo.handle}
-        bio={userInfo.bio}
-        numFollowers={userInfo.numFollowers}
-        numFollowing={userInfo.numFollowing}
-        location={userInfo.location}
-        joined={userInfo.joined}
-      />
-      <ProfileActions />
-      <ProfileFeed 
-        handle={userInfo.handle}
-      />
-    </ProfileWrapper>
-  ) 
+  if(userInfoStatus !== 'idle'){
+    return(
+      // Loading animation
+      <CircularProgress style={{margin: 'auto'}} />
+    )
+  } else {
+    return(
+      <ProfileWrapper>
+        <ProfileBanner 
+          avatarSrc={userInfo.avatarSrc}
+          bannerSrc={userInfo.bannerSrc}
+        />
+        <ProfileInfo 
+          displayName={userInfo.displayName}
+          handle={userInfo.handle}
+          bio={userInfo.bio}
+          numFollowers={userInfo.numFollowers}
+          numFollowing={userInfo.numFollowing}
+          location={userInfo.location}
+          joined={userInfo.joined}
+        />
+        <ProfileActions />
+        <ProfileFeed 
+          handle={userInfo.handle}
+        />
+      </ProfileWrapper>
+    ) 
+  }
 }
 
 const ProfileWrapper = styled.div`
